@@ -2,22 +2,12 @@
 
 A script to enable customers of lazy ISPs to perform measurement campaigns of the connection speed as described [here](https://breitbandmessung.de/desktop-app) in an automated way.
 
-## Usage
+# Usage - Native
 
-Create a folder for the measurement results `mkdir messprotokolle`.
+1. Install deps
+   1. (Dev) `npm install `
+   2. (Prod) `npm install --omit=dev && npm run installBrowser`
+2. Build `npm run build` 
+3. Run `npm run start` 
 
-Make sure you have the most recent docker image:
-
-```
-docker pull shiaky/breitbandmessung:latest
-```
-
-Then just run this for creating a single measurement:
-
-```
-docker run -v $PWD/messprotokolle:/export/ shiaky/breitbandmessung:latest
-```
-
-## License
-
-Feel free to use and improve the script as you like. I take no responsibility for the script.
+# Usage - Docker
