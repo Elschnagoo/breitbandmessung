@@ -36,6 +36,7 @@ RUN groupadd -g 999 appuser && \
 ENTRYPOINT ["/init"]
 WORKDIR /app
 
+ENV IS_DOCKER=true
 
 USER appuser
 RUN node /app/node_modules/puppeteer/install.js

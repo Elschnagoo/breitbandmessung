@@ -2,10 +2,8 @@ version: '3'
 services:
   breitbandmessung:
     image: "elschnagoo/breitbandmessung:latest"
-    build:
-      context: .
     volumes:
       - ./export:/app/export
-    command:
-      - sleep
-      - infinity
+#    environment:
+#      CRON: '0 8-20 * * *'
+
