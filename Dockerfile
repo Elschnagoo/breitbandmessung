@@ -9,6 +9,7 @@ COPY ./package.json /app/
 COPY ./package-lock.json /app/
 COPY ./tsconfig.json /app/
 COPY ./dist /app/dist
+COPY ./docker/run.sh /app/run.sh
 COPY ./node_modules /app/node_modules
 
 
@@ -26,19 +27,11 @@ ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLA
 RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
 
 
-RUN groupadd -g 999 appuser && \
-    useradd -r -u 999 -g appuser appuser && \
-    mkdir -p /home/appuser && \
-    chown -R appuser:appuser /home/appuser &&\
-    chown -R appuser:appuser /app
-
-
 ENTRYPOINT ["/init"]
 WORKDIR /app
 
 ENV IS_DOCKER=true
 
-USER appuser
 RUN node /app/node_modules/puppeteer/install.js
 
-CMD ["npm","run","start"]
+CMD ["/app/run.sh"]

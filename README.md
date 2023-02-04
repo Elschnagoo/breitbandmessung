@@ -11,3 +11,8 @@ A script to enable customers of lazy ISPs to perform measurement campaigns of th
 3. Run `npm run start` 
 
 # Usage - Docker
+```shell
+   docker-compose up -d 
+```
+
+> Uncomment the cron value in compose file to use cron mode
