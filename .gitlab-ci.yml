@@ -4,7 +4,7 @@ stages:
 
 build:project:x64:
   stage: prebuild
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16
+  image: node:16
   tags:
     - docker
   script:
