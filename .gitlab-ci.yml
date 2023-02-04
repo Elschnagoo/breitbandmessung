@@ -29,7 +29,7 @@ build:docker:x64:
   after_script:
     - docker logout $CI_REGISTRY
   needs:
-    - 'build:project:x64'
+    - 'build:project'
   tags:
     - shell
   only:
