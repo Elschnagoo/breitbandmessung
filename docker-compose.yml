@@ -6,3 +6,6 @@ services:
       context: .
     volumes:
       - ./export:/app/export
+    command:
+      - sleep
+      - infinity
