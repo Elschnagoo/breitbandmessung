@@ -47,11 +47,20 @@ jobs:
           node-version:  18
       - run: npm install
       - run: npm run build
-      - name: Build and push Docker image
+      - name: Build and push Docker image x64
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
           target: x64
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: 'ghcr.io/elschnagoo/breitbandmessung:x64-master'
+          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and push Docker image arm64
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          target: arm64
+          platform: 'linux/arm64'
+          tags: 'ghcr.io/elschnagoo/breitbandmessung:arm64-master'
           labels: ${{ steps.meta.outputs.labels }}
