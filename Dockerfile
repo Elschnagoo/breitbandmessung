@@ -28,6 +28,8 @@ RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
 
 RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser && \
+    mkdir -p /home/appuser && \
+    chown -R appuser:appuser /home/appuser &&\
     chown -R appuser:appuser /app
 
 
