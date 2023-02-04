@@ -8,7 +8,7 @@ build:project:x64:
   tags:
     - docker
   script:
-    - npm install --omit=dev
+    - npm install
     - npm run build
   only:
     - tags
