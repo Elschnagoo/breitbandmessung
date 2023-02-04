@@ -22,7 +22,7 @@ ARG S6_OVERLAY_VERSION=3.1.2.1
 WORKDIR /app
 
 
-RUN node /app/node_modules/puppeteer/install.js
+# RUN node /app/node_modules/puppeteer/install.js
 CMD ["npm","run","start"]
 
 
