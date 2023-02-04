@@ -9,6 +9,7 @@ COPY ./package.json /app/
 COPY ./package-lock.json /app/
 COPY ./tsconfig.json /app/
 COPY ./dist /app/dist
+COPY ./node_modules /app/node_modules
 
 
 RUN apt-get update && apt-get upgrade -y && \
