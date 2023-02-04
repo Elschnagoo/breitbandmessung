@@ -1,14 +1,8 @@
 version: '3'
 services:
   breitbandmessung:
-    image: "gitlab.echo4.eu:5050/elschnagoo/breitbandmessung:0.1.7"
+    image: "elschnagoo/breitbandmessung:latest"
     volumes:
       - ./export:/app/export
-      - ./dist:/app/dist
-      - ./docker/run.sh:/app/run.sh
-    environment:
-      IS_DOCKER: 'true'
+#    environment:
 #      CRON: '0 8-20 * * *'
-    command:
-      - /app/run.sh
-

@@ -15,4 +15,17 @@ A script to enable customers of lazy ISPs to perform measurement campaigns of th
    docker-compose up -d 
 ```
 
+## Compose Example
+```yaml
+version: '3'
+services:
+   breitbandmessung:
+      image: "elschnagoo/breitbandmessung:latest"
+      volumes:
+         - ./export:/app/export
+   #    environment:
+   #      CRON: '0 8-20 * * *'
+```
+
+
 > Uncomment the cron value in compose file to use cron mode
