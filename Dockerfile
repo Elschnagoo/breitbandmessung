@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as base_image
 
 ARG S6_OVERLAY_VERSION=3.1.2.1
 ENV DEBIAN_FRONTEND noninteractive
@@ -23,9 +23,6 @@ RUN apt-get update && apt-get upgrade -y && \
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
 RUN tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz /tmp
-RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
-
 
 ENTRYPOINT ["/init"]
 WORKDIR /app
@@ -35,3 +32,18 @@ ENV IS_DOCKER=true
 RUN node /app/node_modules/puppeteer/install.js
 
 CMD ["/app/run.sh"]
+
+FROM base_image as x64
+
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
+
+FROM base_image as aarch64
+
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-aarch64.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-aarch64.tar.xz
+
+FROM base_image as arm32
+
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-arm32.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-arm32.tar.xz

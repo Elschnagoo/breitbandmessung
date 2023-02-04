@@ -4,5 +4,5 @@ services:
     image: "elschnagoo/breitbandmessung:latest"
     volumes:
       - ./export:/app/export
-#    environment:
-#      CRON: '0 8-20 * * *'
+    environment:
+      CRON: '18 8-22 * * *'
