@@ -5,3 +5,4 @@ node_modules/*
 /export/
 /package-lock.json
 /yarn.lock
+/.env

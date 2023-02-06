@@ -31,6 +31,7 @@ export default class BreitbandMessung extends CoreLogChannel {
     path: string;
     headLess?: boolean;
     docker?: boolean;
+    exec?: string;
     log?: CoreLogger;
   }) {
     super('messure', conf.log || new DefaultLogger(LogLevel.VERBOSE));
